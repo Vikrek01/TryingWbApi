@@ -1,0 +1,42 @@
+﻿@model IEnumerable<testCore.Models.Employee>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="text-center">
+    <h2 class=" mt-4 mb-4">Employee Details</h2>
+</div>
+    <table class="table " id="MyDataTable">
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Email
+            </th>
+            <th>
+               Department
+            </th>
+            <th>Action</th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.Name
+                </td>
+                <td>
+                    @item.Email
+                </td>
+            <td>@item.Department</td>
+                <td>
+                <a class="btn btn-sm btn-info" asp-area="" asp-controller="Employee" asp-route-Id="@item.Id" asp-action="Edit">Edit</a>
+                <a class="btn btn-sm btn-danger" asp-area="" asp-controller="Employee" asp-route-Id="@item.Id" asp-action="DeleteEmployee">Delete</a>
+                <a class="btn btn-sm btn-sucess" asp-area="" asp-controller="Employee" asp-route-Id="@item.Id" asp-action="GetFeedbacks">View Feedback</a>
+                </td>
+            </tr>
+        }
+    </table>
